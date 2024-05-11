@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{% block head %}
+    <title>Raa</title>
+        <h1 style="text-align: center;">Task Manager</h1>
+{% endblock %}
+{% block body %}
+<div style="text-align: center;">
+    <table style="text-align: center;">
+        <tr style="text-align: center;">
+            <th>Task ID</th>
+            <th>Task</th>
+            <th>Options</th>
+        </tr>
+        {% for task in tasks %}
+        <tr style="text-align: center;">
+            <td>{{ task.id }}</td>
+            <td>{{ task.task_description }}</td>
+            <td>
+                <a href="/update/{{task.id}}"> Update</a><br>
+                <a href="/delete/{{task.id}}"> Delete</a><br>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+<form action ="/" method="post" style="text-align: center;">
+    <br><br>
+    <input type="text" name="content" id="content">
+    <input type="submit" value="Add Task to List!">
+</form>
+{% endblock %}
